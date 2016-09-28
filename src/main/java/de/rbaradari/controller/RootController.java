@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class RootController {
-	@RequestMapping("/")
-	@ResponseBody
-	String home() {
+
+    @RequestMapping("/")
+    @ResponseBody
+    String home() {
         return "Success! The microservice component is up and running";
-	}
+    }
+
 }
