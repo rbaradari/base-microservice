@@ -8,6 +8,8 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
 
@@ -18,7 +20,8 @@ import de.rbaradari.model.Book;
 public class RestController {
 
     @GET
-    List<Book> listBooks() {
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Book> listBooks() {
         return Arrays.asList(
                 buildBook(1, "443546545645", "How to Code", 2012, Month.APRIL),
                 buildBook(2, "5435345435", "Tom Sawyer", 2012, Month.JULY),
@@ -29,7 +32,8 @@ public class RestController {
 
     @GET
     @Path("{id}")
-    Book getBook(@PathParam("id") long id) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Book getBook(@PathParam("id") long id) {
         return buildBook(id, "12343534-" + id, "My Little Pony", 2012, Month.APRIL);
     }
 
@@ -41,4 +45,5 @@ public class RestController {
 
         return book;
     }
+
 }
